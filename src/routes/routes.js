@@ -1,4 +1,5 @@
 import DashboardLayout from '../components/Dashboard/Layout/DashboardLayout.vue'
+import Home from '@/components/Home'
 // GeneralViews
 import NotFound from '../components/GeneralViews/NotFoundPage.vue'
 
@@ -14,8 +15,13 @@ import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 const routes = [
   {
     path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview'
+    name: Home,
+    component: Home
+  },
+  {
+    path: '/home',
+    name: Home,
+    component: Home
   },
   {
     path: '/admin',
