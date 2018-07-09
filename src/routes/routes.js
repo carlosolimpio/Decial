@@ -15,8 +15,9 @@ import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 const routes = [
   {
     path: '/',
-    name: Home,
-    component: Home
+    name: DashboardLayout,
+    component: DashboardLayout,
+    redirect: '/admin/overview'
   },
   {
     path: '/home',
