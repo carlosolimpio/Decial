@@ -1,61 +1,38 @@
 <template>
-  <div id="app">
-    <auth-layout v-if="isAuth"></auth-layout>
-      <div class="admin-container" v-else>
-        <Sidebar :navItems="nav"/>
-        <div id="right-panel" class="right-panel">
-          <Header/>
-          <div class="content pb-0">
-              <transition enter-active-class="animated fadeIn">
-                <router-view></router-view>
-              </transition>
-          </div>
-        </div>
-      </div>
+  <div :class="{'nav-open': $sidebar.showSidebar}">
+    <notifications></notifications>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import nav from './nav'
-import Header from './components/Header.vue'
-import Sidebar from './components/Sidebar.vue'
-import AuthLayout from './layouts/AuthLayout.vue';
-
-export default {
-  data () {
-    return {
-      nav: nav.items
+  export default {}
+</script>
+<style lang="scss">
+  .vue-notifyjs.notifications{
+    .list-move {
+      transition: transform 0.3s, opacity 0.4s;
     }
-  },
-  components: {
-    AuthLayout,
-    Header,
-    Sidebar
-  },
-  computed: {
-    name(){
-      return this.$route.name
-    },
-    list() {
-      return this.$route.matched
-    },
-    isAuth () {
-      return this.$route.path.match('auth')
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+
+    }
+    .list-enter-active {
+      transition: transform 0.2s ease-in, opacity 0.4s ease-in;
+    }
+    .list-leave-active {
+      transition: transform 1s ease-out, opacity 0.4s ease-out;
+    }
+
+    .list-enter {
+      opacity: 0;
+      transform: scale(1.1);
+
+    }
+    .list-leave-to {
+      opacity: 0;
+      transform: scale(1.2, 0.7);
     }
   }
-}
-</script>
-
-<style lang="scss">
-@import url('./assets/css/font-awesome.min.css');
-@import url('./assets/css/themify-icons.css');
-@import url('./assets/css/pe-icon-7-filled.css');
-@import url('./assets/css/flag-icon.min.css');
-@import url('./assets/css/cs-skin-elastic.css');
-
-@import "./assets/scss/style";
-
-button{
-    cursor: pointer;
-}
 </style>

@@ -1,92 +1,45 @@
+# [Vue Light Bootstrap Dashboard](vuejs.creative-tim.com/vue-light-bootstrap-dashboard) [![version][version-badge]][CHANGELOG] [![license][license-badge]][LICENSE]
 
-# Basix Admin - VueJS Bootstrap v4 Admin Dashboard Template #
+> Admin dashboard based on light bootstrap dashboard UI template + vue-router
 
-![alt text](https://jeweltheme.com/wp-content/uploads/2017/11/cover.jpg "Basix Admin - Vuejs Bootstrap Admin Dashboard Template")
+This project is a vue version of [Light bootstrap dashboard](https://www.creative-tim.com/product/light-bootstrap-dashboard)
+designed for vue js. The dashboard includes Bootstrap 4, vue-router, chartist, google-maps and several other plugins/components.
 
+Check the [Live Demo here](vuejs.creative-tim.com/vue-light-bootstrap-dashboard).
 
-### Check out VueJS Bootstrap Admin Dashboard Template ###
+![](static/Dashboard.PNG)
+## :rocket: Getting started
 
-# Get More [Free VueJS BootStrap Admin Templates](https://vuejsadmin.com) #
+Vue Light Bootstrap Dashboard is built on top of Bootstrap 4, Vuejs and Vue-router. To get started do the following steps:
+1. Download the project
+2. Make sure you have node.js (https://nodejs.org/en/) installed
+3. Type `npm install` in the source folder where `package.json` is located
+4. Type `npm run dev` to start the development server
 
-Check out Basix Admin Template Pro [Themeforest Page](https://themeforest.net/item/basix-admin-vuejs-bootstrap-admin-dashboard-template/20838455?ref=Jewel_Theme).
+The repo uses [vue-cli](https://github.com/vuejs/vue-cli) scaffolding which takes care of the development setup with webpack and all the necessary modern tools to make web development faster and easier.
 
-## Basix Admin Dashboard Template ##
+## [Documentation](https://cristijora.github.io/vue-light-bootstrap-dashboard/documentation/#/buttons)
 
-Basix Admin is an Open Source Vuejs Admin Template. Most of all necessary featured are pre developed within the Template. We've added 60+ Widgets and 80+ Components variations. It's not just a admin template, it's all in one to Develop your personal Admin Dashboard.
+## :cloud: Build Setup
 
-You can access to 5000+ Icons (Fontawesome, Brandico, Entypo, Fontelico, Glyphicons, Iconic Stroke, Ionicons, Maki, OpenWeb Icons). Advanced Google Maps Integrations will help you set your desired design easily.
+### install dependencies
+`npm install`
+### serve with hot reload at localhost:8000
+`npm run dev`
+### build for production with minification
+`npm run build`
+### run unit tests
+`npm run unit`
+### run and watch unit tests
+`npm run unit:watch`
 
-**NOTE: Please remember to STAR this project and FOLLOW my Github to stay up to date with this template.**
+## :clipboard: Contribution guide
+* `npm install` or `yarn install`
+* Please don't use jQuery or jQuery based plugins since there are many pure Vue alternatives
 
-## [Demo](https://demos.vuejsadmin.com/basix/) ##
-## [Documentation](https://docs.vuejsadmin.com/basix-admin) ##
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-## What's included ##
-
-Within the ZIP download you will find the following directories and files:
-```
-Basix Admin/
-├── src/
-├────── assets/
-├────── components/
-├────── dashboard/
-├────── directives/
-├────── images/
-├────── layouts/
-├────── pages/
-├────── router/
-├────── store/
-├────── views/
-```
-
-
-## Installation and Build Setup
-### Single Line Installation ( Yarn Install )
-``` 
-# install dependencies
-yarnpkg install
-
-# serve with hot reload at localhost:8080
-yarn run dev
-
-# build for production with minification
-yarn run build
-
-```
-or,
-
-### NPM Installation
-``` 
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-```
-
-### License ###
-
-MIT License
-Copyright (c) 2017 Jewel Theme
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
+[CHANGELOG]: ./CHANGELOG.md
+[LICENSE]: ./LICENSE.md
+[version-badge]: https://img.shields.io/badge/version-1.0.0-blue.svg
+[license-badge]: https://img.shields.io/badge/license-MIT-blue.svg
