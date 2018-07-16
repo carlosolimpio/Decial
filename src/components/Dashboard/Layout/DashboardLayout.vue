@@ -30,6 +30,14 @@
         <i class="nc-icon nc-bell-55"></i>
         <p>Notifications</p>
       </sidebar-link>
+       <sidebar-link to="/admin/adicionarPontos">
+        <i class="nc-simple-add"></i>
+        <p>Adicionar Pontos</p>
+      </sidebar-link>
+      <sidebar-link to="/admin/validacao">
+        <i class="nc-icon nc-check-2"></i>
+        <p>Validar Pontos</p>
+      </sidebar-link>
     </side-bar>
     <div class="main-panel">
       <top-navbar></top-navbar>
