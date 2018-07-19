@@ -22,8 +22,8 @@
           </fg-input>
         </div>
       </div>
-    
-     
+
+
         <div class="col-md-4">
           <fg-input type="number"
                     label="CEP"
@@ -38,7 +38,7 @@
                 </div>
                 </form>
             </div>
-    
+
         <div class="col-md-12" style="padding-top:30px;">
           <div class="form-group">
             <label>Descrição do problema</label>
@@ -46,15 +46,16 @@
                       placeholder="Here can be your description"
                       v-model="ponto.descricao">
               </textarea>
-          </div>       
+          </div>
       </div>
-     
-           <div class="text-center">
-        <button type="submit" class="btn btn-info btn-fill float-right"  @click.prevent="updatePonto">
-          Adicionar 
+
+      <div class="text-center">
+        <h3 class = 'text-left alert alert-danger' v-if ='mensagem'>Não foi possível adicionar o ponto</h3><br>
+        <button type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updatePonto">
+          Adicionar
         </button>
       </div>
-      
+
       <div class="clearfix"></div>
     </form>
   </card>
@@ -71,29 +72,30 @@
         ponto: {
           rua: '22 de Outubtro',
           bairro: 'Vasco da Gama',
-          referencia: 'Treze',
+          referencia: 'treze',
           cep: '52018260',
           descricao: `Barreira com risco de desabamento`,
           imagem:''
-        }
+        },
+        mensagem: false
       }
     },
     methods: {
       updatePonto () {
         if(this.ponto.rua != "" && this.ponto.bairro != "" && this.ponto.cep != "" && this.ponto.referencia != "" && this.ponto.descricao != ""){
-           alert('Your data: ' + JSON.stringify(this.ponto));
+          this.mensagem = false;
         }else{
-          alert('Preenha Todos os Campos!');
+          this.mensagem = true;
         }
-            
+
       }
     }
-   
+
   }
 
 </script>
 <style>
-  
+
 </style>
 
 
