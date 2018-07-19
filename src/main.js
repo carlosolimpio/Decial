@@ -22,22 +22,21 @@ export const serverBus = new Vue(
     data: {
       usuarios: [
         {
-            login: 'ramices',
-            senha: '1234',
-            email: 'ramicesmoises@gmail.com',
-            nome: 'Ramices',
-            sobrenome: 'Moises',
-            endereco: 'Bela Vista',
-            cidade: 'Vitoria de Santo Antao',
-            pais: 'Brasil',
-            CEP: '55500000',
-            sobreMim: `Estudante da UFRPE`,
-            caminhoFoto: 'static/img/faces/ramices.jpg'
+          login: 'ramices',
+          senha: '1234',
+          email: 'ramicesmoises@gmail.com',
+          nome: 'Ramices',
+          sobrenome: 'Moises',
+          endereco: 'Bela Vista',
+          cidade: 'Vitoria de Santo Antao',
+          pais: 'Brasil',
+          CEP: '55500000',
+          sobreMim: `Estudante da UFRPE`,
+          caminhoFoto: 'static/img/faces/ramices.jpg'
         }]
     }
   }
-);
-
+)
 
 /* eslint-disable no-new */
 new Vue({

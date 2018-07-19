@@ -13,7 +13,6 @@ import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import ValidarPonto from 'src/components/Dashboard/Views/ValidarPonto.vue'
 import AdicionarPontos from 'src/components/Dashboard/Views/AdicionarPontos.vue'
 
-
 const routes = [
   {
     path: '/',
@@ -59,11 +58,13 @@ const routes = [
         path: 'notifications',
         name: 'Notifications',
         component: Notifications
-      },{
+      },
+      {
         path: 'validacao',
         name: 'ValidarPonto',
         component: ValidarPonto
-      },{
+      },
+      {
         path: 'adicionarPontos',
         name: 'AdicionarPontos',
         component: AdicionarPontos

@@ -40,11 +40,11 @@
     props: {
       title: {
         type: String,
-        default: 'Vue LBD'
+        default: 'Decial'
       },
       backgroundColor: {
         type: String,
-        default: 'black',
+        default: 'orange',
         validator: (value) => {
           let acceptedValues = ['', 'blue', 'azure', 'green', 'orange', 'red', 'purple', 'black']
           return acceptedValues.indexOf(value) !== -1
@@ -52,7 +52,7 @@
       },
       backgroundImage: {
         type: String,
-        default: 'static/img/sidebar-5.jpg'
+        default: ''
       },
       activeColor: {
         type: String,

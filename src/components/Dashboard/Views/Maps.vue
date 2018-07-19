@@ -1,7 +1,7 @@
 <template>
   <div class="mapa">
-    <gmap-map id="map" :center="center" :zoom="17" :markers="markers">
-      <gmap-marker :position="center"></gmap-marker>
+    <gmap-map id="map" :center="center" :zoom="17">
+      
     </gmap-map>
   </div>
 </template>
@@ -29,15 +29,13 @@
                   position: {
                       lat: 52.098823,
                       lng: -4.549537
-                  },
-                  infoText: 'Marker 1'
+                  }
               },
               {
                   position: {
                       lat: 52.111571,
                       lng: -4.570579
-                  },
-                  infoText: 'Marker 2'
+                  }
               }
           ]
           }
