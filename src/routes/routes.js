@@ -13,13 +13,14 @@ import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import ValidarPonto from 'src/components/Dashboard/Views/ValidarPonto.vue'
 import AdicionarPontos from 'src/components/Dashboard/Views/AdicionarPontos.vue'
 import Profile from 'src/components/Dashboard/Views/UserProfile/Profile.vue'
-import Login from 'src/components/Dashboard/Views/Login.vue'
+// import Login from 'src/components/Dashboard/Views/Login.vue'
+import Home from 'src/components/Dashboard/Views/Home.vue'
 
 const routes = [
   {
     path: '/',
-    component: DashboardLayout,
-    redirect: '/admin/overview'
+    name: 'Home',
+    component: Home
   },
   {
     path: '/admin',
