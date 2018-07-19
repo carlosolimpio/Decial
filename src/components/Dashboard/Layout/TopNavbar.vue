@@ -16,10 +16,10 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#/admin/user">
+            <a class="nav-link" href="#/admin/config">
               Configurações
             </a>
-            <a class="nav-link" href="#/login">
+            <a class="nav-link" href="#/">
               Sair
             </a>
           </li>

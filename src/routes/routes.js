@@ -12,6 +12,8 @@ import Maps from 'src/components/Dashboard/Views/Maps.vue'
 import Notifications from 'src/components/Dashboard/Views/Notifications.vue'
 import ValidarPonto from 'src/components/Dashboard/Views/ValidarPonto.vue'
 import AdicionarPontos from 'src/components/Dashboard/Views/AdicionarPontos.vue'
+import Profile from 'src/components/Dashboard/Views/UserProfile/Profile.vue'
+import Login from 'src/components/Dashboard/Views/Login.vue'
 
 const routes = [
   {
@@ -32,6 +34,11 @@ const routes = [
       {
         path: 'user',
         name: 'User',
+        component: Profile
+      },
+      {
+        path: 'config',
+        name: 'config',
         component: UserProfile
       },
       {
