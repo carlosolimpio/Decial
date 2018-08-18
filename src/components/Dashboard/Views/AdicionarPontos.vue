@@ -43,14 +43,15 @@
           <div class="form-group">
             <label>Descrição do problema</label>
             <textarea rows="5" class="form-control border-input"
-                      placeholder="Here can be your description"
+                      placeholder="Descreva a situação"
                       v-model="ponto.descricao">
               </textarea>
           </div>
       </div>
 
       <div class="text-center">
-        <h3 class = 'text-left alert alert-danger' v-if ='mensagem'>Não foi possível adicionar o ponto</h3><br>
+        <!--<h3 class = 'text-left alert alert-danger' v-else>Adicionar o ponto</h3><br>-->
+        <h3 class = 'text-left alert alert-danger' v-if ='mensagem'>Erro ao adicionar, verifique os campos</h3><br>
         <button type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updatePonto">
           Adicionar
         </button>
@@ -78,6 +79,7 @@
           imagem:''
         },
         mensagem: false
+
       }
     },
     methods: {
@@ -86,6 +88,7 @@
           this.mensagem = false;
         }else{
           this.mensagem = true;
+
         }
 
       }
@@ -95,7 +98,6 @@
 
 </script>
 <style>
-
 </style>
 
 
