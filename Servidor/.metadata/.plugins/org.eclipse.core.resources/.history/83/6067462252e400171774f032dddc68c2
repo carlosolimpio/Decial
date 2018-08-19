@@ -1,0 +1,205 @@
+package models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.JsonIgnore;
+import com.avaje.ebean.annotation.WhenCreated;
+import com.avaje.ebean.annotation.WhenModified;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@Entity
+@Table
+@JsonAutoDetect
+public class Crime extends Model{
+	@Id
+	private Long crime_id;
+	
+	@Column
+	private String cidade;
+	
+	@Column (nullable= false)
+	private Date dataOcorrencia;
+	
+	@Column
+	private String nome;
+	
+	@Column 
+	private String objeto_utilizado;
+	
+	@Column 
+	private int qnt_vitimas;
+	
+	@Column 
+	private String sexo;
+	
+	@Column 
+	private String tipo_crime;
+	
+	/*@WhenCreated
+	@Column (nullable=false, updatable = false) 
+	private Date dataCriacao;
+	
+	@WhenModified
+	@Column  
+	private Date dataModificacao;
+	*/
+	
+    public Crime(Long crime_id, String cidade, Date dataOcorrencia, String nome, String objeto_utilizado,
+			int qnt_vitimas, String sexo, String tipo_crime) {
+	
+		this.crime_id = crime_id;
+		this.cidade = cidade;
+		this.dataOcorrencia = dataOcorrencia;
+		this.nome = nome;
+		this.objeto_utilizado = objeto_utilizado;
+		this.qnt_vitimas = qnt_vitimas;
+		this.sexo = sexo;
+		this.tipo_crime = tipo_crime;
+		
+	}
+
+
+
+	public Long getCrime_id() {
+		return crime_id;
+	}
+
+
+
+
+	public void setCrime_id(Long crime_id) {
+		this.crime_id = crime_id;
+	}
+
+
+
+
+	public String getCidade() {
+		return cidade;
+	}
+
+
+
+
+	public void setCidade(String cidade) {
+		this.cidade = cidade;
+	}
+
+
+
+
+	public Date getDataOcorrencia() {
+		return dataOcorrencia;
+	}
+
+
+
+
+	public void setDataOcorrencia(Date dataOcorrencia) {
+		this.dataOcorrencia = dataOcorrencia;
+	}
+
+
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+
+	public String getObjeto_utilizado() {
+		return objeto_utilizado;
+	}
+
+
+
+
+	public void setObjeto_utilizado(String objeto_utilizado) {
+		this.objeto_utilizado = objeto_utilizado;
+	}
+
+
+
+
+	public int getQnt_vitimas() {
+		return qnt_vitimas;
+	}
+
+
+
+
+	public void setQnt_vitimas(int qnt_vitimas) {
+		this.qnt_vitimas = qnt_vitimas;
+	}
+
+
+
+
+	public String getSexo() {
+		return sexo;
+	}
+
+
+
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+
+
+
+	public String getTipo_crime() {
+		return tipo_crime;
+	}
+
+
+
+
+	public void setTipo_crime(String tipo_crime) {
+		this.tipo_crime = tipo_crime;
+	}
+
+
+
+
+
+
+
+	//METODOS REPOSITORIO
+	public static  List<Crime> listar(){
+		return Ebean.createQuery(Crime.class).where().findList();
+	}
+	
+	public static Crime buscar(Long id){
+		return Ebean.createQuery(Crime.class).where().eq("id", id).findUnique();
+	}
+	
+	public static Crime buscar(String username){
+		return Ebean.createQuery(Crime.class).where().eq("username", username).findUnique();
+	}
+	
+	public static Crime getUserToken(String token) {
+		 return Ebean.createQuery(Crime.class).where().eq("token", token).findUnique();
+	}
+    
+    
+}
+

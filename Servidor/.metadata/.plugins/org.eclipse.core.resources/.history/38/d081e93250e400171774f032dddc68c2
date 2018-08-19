@@ -1,0 +1,20 @@
+package controllers;
+
+import javax.inject.Inject;
+
+import interceptors.ApiInterceptor;
+import play.libs.Json;
+import play.libs.ws.WSClient;
+import play.mvc.Controller;
+import play.mvc.Result;
+
+@play.mvc.With({ ApiInterceptor.class })
+public class UsuarioController extends Controller{
+	
+	@Inject WSClient ws;	
+	
+	public Result index(){
+		 return ok(Json.toJson("Ok"));
+	}
+
+}

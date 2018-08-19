@@ -1,0 +1,23 @@
+package controllers;
+
+import javax.inject.Inject;
+
+import interceptors.ApiInterceptor;
+import models.Crime;
+import play.libs.Json;
+import play.libs.ws.WSClient;
+import play.mvc.Controller;
+import play.mvc.Result;
+import services.CrimeSevice;
+
+@play.mvc.With({ ApiInterceptor.class })
+public class CrimeController extends Controller{
+	
+	@Inject WSClient ws;	
+	
+	public Result detalhes(Long id){
+		Crime c = CrimeSevice.buscar(id);
+		 return ok(Json.toJson(c));
+	}
+
+}

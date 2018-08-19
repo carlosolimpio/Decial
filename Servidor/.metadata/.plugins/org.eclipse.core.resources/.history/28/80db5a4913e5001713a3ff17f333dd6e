@@ -1,0 +1,27 @@
+package services;
+
+import java.util.List;
+
+import com.avaje.ebean.Ebean;
+
+import models.Crime;
+
+public class CrimeService {
+
+	public static  List<Crime> listar(){
+		return Ebean.createQuery(Crime.class).where().findList();
+	}
+	
+	public static Crime buscar(Long id){
+		return Ebean.createQuery(Crime.class).where().eq("crime_id", id).findUnique();
+	}
+	
+	public static List<Crime> buscarPorNome(String nome){
+		return Ebean.createQuery(Crime.class).where().eq("nome", nome).findList();
+	}
+
+	public static List<Crime> todos() {
+		return Ebean.createQuery(Crime.class).findList();
+	}
+
+}

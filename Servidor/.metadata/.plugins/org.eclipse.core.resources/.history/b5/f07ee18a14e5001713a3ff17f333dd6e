@@ -1,0 +1,36 @@
+package services;
+
+import java.util.List;
+
+import com.avaje.ebean.Ebean;
+
+import models.Crime;
+
+public class CrimeService {
+
+	public static  List<Crime> listar(){
+		return Ebean.createQuery(Crime.class).where().findList();
+	}
+	
+	public static Crime buscar(Long id){
+		return Ebean.createQuery(Crime.class)
+				.where()
+				.idEq(id)
+				.findUnique();
+	}
+	
+	public static List<Crime> buscarPorNome(String nome){
+		return Ebean.createQuery(Crime.class)
+				.where()
+				.ilike("nome", nome+"%") // % autocomplete
+				.findList();
+	}
+
+	public static List<Crime> todos() {
+		return Ebean.createQuery(Crime.class)
+				.orderBy("crime_id DESC")
+				.setMaxRows(100)
+				.findList();
+	}
+
+}

@@ -1,0 +1,161 @@
+package models;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.avaje.ebean.Ebean;
+import com.avaje.ebean.Model;
+import com.avaje.ebean.annotation.JsonIgnore;
+import com.avaje.ebean.annotation.WhenCreated;
+import com.avaje.ebean.annotation.WhenModified;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+
+@Entity
+@Table
+@JsonAutoDetect
+public class Crime extends Model{
+	@Id
+	private Long id;
+	
+	@Column (nullable= false)
+	private int avaId;
+	
+	@Column (nullable= false)
+	private String username;
+	
+	@JsonIgnore
+	@Column 
+	private String token;
+	
+	@Column (nullable= false)
+	private String nome;
+	
+	@Column 
+	private String matricula;
+	
+	@Column 
+	private String imagem;
+	
+	@Column 
+	private String imagemSmall;
+	
+	@Column 
+	private String cidade;
+	
+	@Column 
+	private String pais;
+	
+	@Column 
+	private String instituicao;
+	
+	@Column 
+	private String email;
+	
+	@Column 
+    private String departamento;
+	
+	@WhenCreated
+	@Column (nullable=false, updatable = false) 
+	private Date dataCriacao;
+	
+	@WhenModified
+	@Column  
+	private Date dataModificacao;
+	    
+    
+    public Crime(int avaId, String matricula, String username, String nome,String email, String instituicao, 
+    		 String departamento, String cidade, String pais, String imagem, String imagemSmall){
+    	
+    	this.avaId = avaId;
+    	this.matricula = matricula;
+    	this.username = username;
+    	this.nome = nome;
+    	this.email = email;
+    	this.instituicao = instituicao;
+    	this.imagem = imagem;
+    	this.departamento = departamento;
+    	this.cidade = cidade;
+    	this.pais = pais;
+    	this.imagemSmall = imagemSmall;
+    	this.token = token;
+    	//this.publicacoesSalvas = new ArrayList<Publicacao>();
+    }
+    public Crime(){
+    	
+    }
+
+	public Long getId() {
+		return id;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public int getAvaId() {
+		return avaId;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public String getMatricula() {
+		return matricula;
+	}
+	public String getImagem() {
+		return imagem;
+	}
+	public String getImagemSmall() {
+		return imagemSmall;
+	}
+	public String getCidade() {
+		return cidade;
+	}
+	public String getPais() {
+		return pais;
+	}
+	public String getInstituicao() {
+		return instituicao;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public String getDepartamento() {
+		return departamento;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	
+//METODOS REPOSITORIO
+	public static  List<Crime> listar(){
+		return Ebean.createQuery(Crime.class).where().findList();
+	}
+	
+	public static Crime buscar(Long id){
+		return Ebean.createQuery(Crime.class).where().eq("id", id).findUnique();
+	}
+	
+	public static Crime buscar(String username){
+		return Ebean.createQuery(Crime.class).where().eq("username", username).findUnique();
+	}
+	
+	public static Crime getUserToken(String token) {
+		 return Ebean.createQuery(Crime.class).where().eq("token", token).findUnique();
+	}
+    
+    
+}
+
