@@ -1,0 +1,4 @@
+2018-08-19 21:09:11,617 [INFO] from application in ForkJoinPool-1-worker-1 - Creating Pool for datasource 'default'
+2018-08-19 21:09:11,919 [INFO] from play.api.db.HikariCPConnectionPool in ForkJoinPool-1-worker-1 - datasource [default] bound to JNDI as DefaultDS
+2018-08-19 21:09:11,955 [INFO] from play.api.db.DefaultDBApi in ForkJoinPool-1-worker-1 - Database [default] connected at jdbc:mysql://localhost:3308/decial?characterEncoding=UTF-8
+2018-08-19 21:09:12,844 [INFO] from play.api.Play in ForkJoinPool-1-worker-1 - Application started (Dev)
