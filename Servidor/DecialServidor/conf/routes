@@ -19,3 +19,9 @@ PUT		/usuarios/:id		controllers.UsuarioController.update(id:Long)
 
 #ponto
 GET	/pontos_risco		controllers.PontoRiscoController.getAll()
+GET	/pontos_risco/:id		controllers.PontoRiscoController.getById(id:Long)
+GET	/pontos_risco/:cep		controllers.PontoRiscoController.getByCep(cep:String)
+GET	/pontos_risco/:risco		controllers.PontoRiscoController.getByRisco(risco:Integer)
+DELETE	/pontos_risco/:id		controllers.PontoRiscoController.delete(id:Long)
+PUT		/pontos_risco/:id		controllers.PontoRiscoController.update(id:Long)
+POST		/pontos_risco/		controllers.PontoRiscoController.save()

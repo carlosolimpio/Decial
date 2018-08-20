@@ -10,12 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.avaje.ebean.Model;
+
 import enums.RISCO;
 import enums.STATUS;
 
 @Entity
 @Table(name="ponto_risco")
-public class PontoRisco {
+public class PontoRisco extends Model{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class PontoRisco {
 	private STATUS status;
 	private Float latitude;
 	private Float longitude;
-	private Long procesoNumero;
+	private Long processoNumero;
 	private Date dataSolicitacao;
 	private Date dataAceitacao;
 	private RISCO risco;
@@ -46,7 +48,7 @@ public class PontoRisco {
 		this.status = status;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.procesoNumero = processoNumero;
+		this.processoNumero = processoNumero;
 		this.dataAceitacao = dataAceitacao;
 		this.risco = risco;
 		this.avaliadorID = avaliadorID;
@@ -107,11 +109,11 @@ public class PontoRisco {
 	public void setLongitude(Float longitude) {
 		this.longitude = longitude;
 	}
-	public Long getProcesoNumero() {
-		return procesoNumero;
+	public Long getprocessoNumero() {
+		return processoNumero;
 	}
-	public void setProcesoNumero(Long procesoNumero) {
-		this.procesoNumero = procesoNumero;
+	public void setprocessoNumero(Long processoNumero) {
+		this.processoNumero = processoNumero;
 	}
 	public Date getDataSolicitacao() {
 		return dataSolicitacao;
