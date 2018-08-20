@@ -1,7 +1,11 @@
 package controllers;
 
+import java.awt.image.BufferedImage;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
+import enums.TIPOUSUARIO;
 import interceptors.ApiInterceptor;
 import models.Usuario;
 import play.libs.Json;
@@ -16,6 +20,104 @@ public class UsuarioController extends Controller{
 	{
 		List<Usuario> lu = UsuarioService.getAll();
 		return ok(Json.toJson(lu));
+	}
+	
+	public Result getById(Long id)
+	{
+		Usuario usuario = UsuarioService.getUsuarioID(id);
+		return ok(Json.toJson(usuario));
+	}
+	
+	public Result getAllExterno()
+	{
+		List<Usuario> usuario = UsuarioService.getByTipoUsuario(TIPOUSUARIO.COMUM);
+		return ok(Json.toJson(usuario));
+	}
+	
+	public Result getAllAdmin()
+	{
+		List<Usuario> usuario = UsuarioService.getByTipoUsuario(TIPOUSUARIO.ADM);
+		return ok(Json.toJson(usuario));
+	}
+	
+	
+	public Result update(Long id)
+	{
+		JsonNode resultado = request().body().asJson();
+		
+		String login = resultado.get("login").asText();
+		String senha = resultado.get("senha").asText();
+		String email = resultado.get("email").asText();
+		String nome = resultado.get("nome").asText();
+		String sobreNome = resultado.get("sobreNome").asText();
+		String rua = resultado.get("rua").asText();
+		String cidade =  resultado.get("cidade").asText();
+		String pais = resultado.get("pais").asText();
+		String cep= resultado.get("cep").asText();
+		int tipo =  resultado.get("tipo").asInt();
+		TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
+		
+		Usuario usuario = UsuarioService.getUsuarioID(id);
+		
+		if(usuario == null)
+			return null;
+		
+		usuario.setLogin(login);
+		usuario.setSenha(senha);
+		usuario.setEmail(email);
+		usuario.setNome(nome);
+		usuario.setSobreNome(sobreNome);
+		usuario.setRua(rua);
+		usuario.setCidade(cidade);
+		usuario.setPais(pais);
+		usuario.setCep(cep);
+		usuario.setTipo(tipoUsuario);
+		usuario.save();
+		return ok(Json.toJson(usuario));
+	}
+	
+	public Result delete(Long id)
+	{
+		Usuario usuario = UsuarioService.getUsuarioID(id);
+		
+		if(usuario == null)
+			return null;
+		
+		usuario.delete();
+		return ok(Json.toJson(usuario));
+	}
+	
+	
+	
+	public Result save()
+	{
+		JsonNode resultado = request().body().asJson();
+		
+		try{
+			
+			String login = resultado.get("login").asText();
+			String senha = resultado.get("senha").asText();
+			String email = resultado.get("email").asText();
+			String nome = resultado.get("nome").asText();
+			String sobreNome = resultado.get("sobreNome").asText();
+			String rua = resultado.get("rua").asText();
+			String cidade =  resultado.get("cidade").asText();
+			String pais = resultado.get("pais").asText();
+			String cep= resultado.get("cep").asText();
+			int tipo =  resultado.get("tipo").asInt();
+			TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
+			
+			
+			Usuario usuario = new Usuario(login, senha, email, nome, sobreNome, rua, cidade, pais, cep, tipoUsuario);
+			
+			usuario.save();
+			return ok(Json.toJson(usuario));
+			
+		} catch (Exception e) {
+			return null;
+		}
+		
+		
 	}
 
 }

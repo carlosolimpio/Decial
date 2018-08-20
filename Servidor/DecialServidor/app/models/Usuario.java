@@ -10,16 +10,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.avaje.ebean.Model;
+
 import enums.TIPOUSUARIO;
 
 @Entity
 @Table(name="usuario")
-public class Usuario {
+public class Usuario extends Model{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
-	private BufferedImage foto;
 	private String login;
 	private String senha;
 	private String email;
@@ -43,7 +44,7 @@ public class Usuario {
 		this.pais = pais;
 		this.cep = cep;
 		this.setTipo(tipo);
-		this.foto = null;
+		
 	}
 
 	public Long getId() {
@@ -52,12 +53,7 @@ public class Usuario {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public BufferedImage getBufferedImage() {
-		return foto;
-	}
-	public void setBufferedImage(BufferedImage foto) {
-		this.foto = foto;
-	}
+	
 	public String getLogin() {
 		return login;
 	}
