@@ -1,0 +1,21 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+
+
+#usuario
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET		/usuarios		controllers.UsuarioController.getAll()
+GET		/usuarios_admin		controllers.UsuarioController.getAllAdmin()
+GET		/usuarios_externo		controllers.UsuarioController.getAllExterno()
+GET		/usuarios/:id		controllers.UsuarioController.getById(id:Long)
+POST	/usuarios/		controllers.UsuarioController.save()
+DELETE	/usuarios/:id		controllers.UsuarioController.delete(id:Long)
+PUT		/usuarios/:id		controllers.UsuarioController.update(id:Long)
+
+#ponto
+GET	/pontos_risco		controllers.PontoRiscoController.getAll()
