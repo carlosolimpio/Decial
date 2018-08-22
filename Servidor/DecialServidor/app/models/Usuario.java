@@ -31,8 +31,10 @@ public class Usuario extends Model{
 	private String pais;
 	private String cep;
 	private TIPOUSUARIO tipo;
+	private String sobreMim;
+	private String caminhoImagem;
 	
-	public Usuario( String login, String senha, String email, String nome, String sobreNome, String rua, String cidade, String pais, String cep, TIPOUSUARIO tipo)
+	public Usuario( String login, String senha, String email, String nome, String sobreNome, String rua, String cidade, String pais, String cep, TIPOUSUARIO tipo, String sobreMim, String caminhoImagem)
 	{
 		this.login = login;
 		this.senha = senha;
@@ -44,7 +46,8 @@ public class Usuario extends Model{
 		this.pais = pais;
 		this.cep = cep;
 		this.setTipo(tipo);
-		
+		this.sobreMim = sobreMim;
+		this.caminhoImagem = caminhoImagem;
 	}
 
 	public Long getId() {
@@ -115,6 +118,22 @@ public class Usuario extends Model{
 
 	public void setTipo(TIPOUSUARIO tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getSobreMim() {
+		return sobreMim;
+	}
+
+	public void setSobreMim(String sobreMim) {
+		this.sobreMim = sobreMim;
+	}
+
+	public String getCaminhoImagem() {
+		return caminhoImagem;
+	}
+
+	public void setCaminhoImagem(String caminhoImagem) {
+		this.caminhoImagem = caminhoImagem;
 	}
 	
 	

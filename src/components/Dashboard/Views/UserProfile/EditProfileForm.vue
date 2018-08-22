@@ -40,9 +40,9 @@
       <div class="row">
         <div class="col-md-12">
           <fg-input type="text"
-                    label="Endereço"
+                    label="Rua"
                     placeholder="Rua"
-                    v-model="usuario.endereco">
+                    v-model="usuario.rua">
           </fg-input>
         </div>
       </div>
@@ -101,6 +101,7 @@
 </template>
 <script>
   import Card from 'src/components/UIComponents/Cards/Card.vue'
+  import axios from 'axios';
 
   import { serverBus } from 'src/main'
 

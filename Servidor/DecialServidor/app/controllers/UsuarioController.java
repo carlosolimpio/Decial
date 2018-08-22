@@ -56,6 +56,9 @@ public class UsuarioController extends Controller{
 		String cep= resultado.get("cep").asText();
 		int tipo =  resultado.get("tipo").asInt();
 		TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
+		String caminhoImagem = resultado.get("caminhhoImagem").asText();
+		String sobreMim = resultado.get("sobreMim").asText();
+		
 		
 		Usuario usuario = UsuarioService.getUsuarioID(id);
 		
@@ -72,6 +75,8 @@ public class UsuarioController extends Controller{
 		usuario.setPais(pais);
 		usuario.setCep(cep);
 		usuario.setTipo(tipoUsuario);
+		usuario.setCaminhoImagem(caminhoImagem);
+		usuario.setSobreMim(sobreMim);
 		usuario.save();
 		return ok(Json.toJson(usuario));
 	}
@@ -106,9 +111,9 @@ public class UsuarioController extends Controller{
 			String cep= resultado.get("cep").asText();
 			int tipo =  resultado.get("tipo").asInt();
 			TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
-			
-			
-			Usuario usuario = new Usuario(login, senha, email, nome, sobreNome, rua, cidade, pais, cep, tipoUsuario);
+			String sobreMim = resultado.get("sobreMim").asText();
+			String caminhoImagem = resultado.get("caminhhoImagem").asText();
+			Usuario usuario = new Usuario(login, senha, email, nome, sobreNome, rua, cidade, pais, cep, tipoUsuario, sobreMim, caminhoImagem);
 			
 			usuario.save();
 			return ok(Json.toJson(usuario));

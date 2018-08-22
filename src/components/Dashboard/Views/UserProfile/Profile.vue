@@ -16,7 +16,7 @@
     </p>
 
     <p class="description text-center"> 
-      {{usuario.endereco}}, {{usuario.cidade}}, {{usuario.CEP}}, {{usuario.pais}}
+      {{usuario.rua}}, {{usuario.cidade}}, {{usuario.CEP}}, {{usuario.pais}}
     </p>
     <p class="description text-center"> 
       {{usuario.sobreMim}}
