@@ -24,4 +24,9 @@ public class UsuarioService {
 	{
 		return Ebean.createQuery(Usuario.class).where().idEq(id).findUnique();
 	}
+	
+	public static Usuario login(String login, String senha)
+	{
+		return Ebean.createQuery(Usuario.class).where().eq("login", login).eq("senha", senha).findUnique();
+	}
 }

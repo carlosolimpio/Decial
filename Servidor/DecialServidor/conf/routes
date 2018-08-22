@@ -16,6 +16,7 @@ GET		/usuarios/:id		controllers.UsuarioController.getById(id:Long)
 POST	/usuarios/		controllers.UsuarioController.save()
 DELETE	/usuarios/:id		controllers.UsuarioController.delete(id:Long)
 PUT		/usuarios/:id		controllers.UsuarioController.update(id:Long)
+POST	/usuarios/login		controllers.UsuarioController.login()
 
 #ponto
 GET	/pontos_risco		controllers.PontoRiscoController.getAll()

@@ -124,5 +124,19 @@ public class UsuarioController extends Controller{
 		
 		
 	}
+	
+	
+	public Result login()
+	{
+		JsonNode resultado = request().body().asJson();
+		
+		String login = resultado.get("login").asText();
+		String senha = resultado.get("senha").asText();
+		
+		Usuario usuario = UsuarioService.login(login, senha);
+		
+		return ok(Json.toJson(usuario));
+		
+	}
 
 }
