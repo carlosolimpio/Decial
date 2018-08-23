@@ -16,11 +16,17 @@
       <div class="collapse navbar-collapse justify-content-end">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#/admin/config">
+            <a class="nav-link" v-if ="logado" href="#/admin/config">
               Configurações
             </a>
-            <a class="nav-link" href="#/">
+            <a class="nav-link" v-else href="#/admin/login">
+              Login
+            </a>
+            <a v-on:click = 'sair' class="nav-link" href="#/" v-if = "logado">
               Sair
+            </a>
+            <a class="nav-link" v-else href="#/admin/cadastro">
+              Cadastro
             </a>
           </li>
         </ul>
@@ -29,7 +35,11 @@
   </nav>
 </template>
 <script>
+
+import {serverBus} from 'src/main'
+
   export default {
+    name: 'navbar',
     computed: {
       routeName () {
         const {name} = this.$route
@@ -38,8 +48,15 @@
     },
     data () {
       return {
-        activeNotifications: false
+        activeNotifications: false,
+        logado: serverBus.logado
       }
+    },
+    created () {
+     
+      serverBus.$on('logged', (logado) => {
+        this.logado = logado;
+      })
     },
     methods: {
       capitalizeFirstLetter (string) {
@@ -50,6 +67,12 @@
       },
       hideSidebar () {
         this.$sidebar.displaySidebar(false)
+      },
+      sair()
+      {
+        serverBus.logado = true;
+        serverBus.$emit('logged', false);
+            
       }
     }
   }

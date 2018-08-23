@@ -6,15 +6,15 @@
         <i class="nc-icon nc-pin-3"></i>
         <p>Mapa</p>
       </sidebar-link>
-      <sidebar-link to="/admin/user">
-        <i class="nc-icon nc-circle-09"></i>
+      <sidebar-link  to="/admin/user" v-if = "logado">
+        <i  class="nc-icon nc-circle-09"></i>
         <p>Perfil</p>
       </sidebar-link>
-       <sidebar-link to="/admin/adicionarPontos">
+       <sidebar-link to="/admin/adicionarPontos" v-if = "logado">
         <i class="nc-simple-add"></i>
         <p>Adicionar Pontos</p>
       </sidebar-link>
-      <sidebar-link to="/admin/validacao">
+      <sidebar-link to="/admin/validacao" v-if = "logado">
         <i class="nc-icon nc-check-2"></i>
         <p>Validar Pontos</p>
       </sidebar-link>
@@ -41,7 +41,8 @@
   import ContentFooter from './ContentFooter.vue'
   import DashboardContent from './Content.vue'
   import MobileMenu from './MobileMenu.vue'
-  
+  import {serverBus} from 'src/main'
+
   export default {
     components: {
       TopNavbar,
@@ -49,6 +50,20 @@
       DashboardContent,
       MobileMenu
     },
+    data()
+    {
+      return{
+        logado: serverBus.logado
+      }
+    },
+    created () {
+     
+      serverBus.$on('logged', (logado) => {
+        
+        this.logado = logado;
+      })
+    },  
+    
     methods: {
       toggleSidebar () {
         if (this.$sidebar.showSidebar) {

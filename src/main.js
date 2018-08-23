@@ -25,15 +25,14 @@ export const serverBus = new Vue(
   {
     data: {
       usuarios: [
-        ]
+        ],
+        logado: false
     }
   }
 )
 
-axios.get("http://localhost:9000/usuarios",{ responseType: 'json' })
+axios.get("http://localhost:9000/api/usuarios",{ responseType: 'json' })
 .then(response => {
-  console.log(serverBus.usuarios);
-  console.log(response.data);
   serverBus.usuarios = response.data
 })
 
