@@ -11,6 +11,9 @@
                 <button class = 'btn btn-primary ' v-on:click = 'login'>Login</button>
                 <br>
                 <br>
+                <div class = 'alert alert-danger' v-if='errado'>Usuário inválido</div>
+                <br>
+                <br>
             </div>
             </form>
          <br>
@@ -44,7 +47,9 @@ export default {
     
     data () {
         return{
-            usuario: {}
+            usuario: {},
+            errado: false
+
         }
     },
     methods:
@@ -52,18 +57,27 @@ export default {
         login()
         {
            
-            serverBus.logado = true;
-            serverBus.$emit('logged', true);
-            axios.post("http://localhost:9000/api/usuarios/login", { crossdomain: true },{withCredentials: true},
-            {
-            login: this.usuario.login,
-            senha: this.usuario.senha})
-            .then(function(response) {
+            
+            axios.get('http://localhost:9000/api/usuarios/login/' + this.usuario.login + "/" + this.usuario.senha)
+            .then(function(response){
                 
-                
-               console.log(response.data)
                
-             })
+                if(!response.data.login)
+                {
+                   
+                    alert("Usuário inválido")
+                }
+                else
+                {
+                    
+                    serverBus.logado = true;
+                    serverBus.usuario = response.data
+                    serverBus.$emit('logged', true);
+                    this.$router.go('/admin/maps');
+                    
+                    
+                }
+            });  
         }
     }
 }

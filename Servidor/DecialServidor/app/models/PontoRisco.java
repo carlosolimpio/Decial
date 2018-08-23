@@ -34,7 +34,7 @@ public class PontoRisco extends Model{
 	private Date dataSolicitacao;
 	private Date dataAceitacao;
 	private RISCO risco;
-	@OneToOne(mappedBy= "avaliador_id")
+	
 	private Long avaliadorID;
 	
 	public PontoRisco(String cep, String solicitacaoBairro, String solicitacaoEndereco, String solicitacaoDescricao, String enderecoReferencia,

@@ -5,7 +5,7 @@
       <a href="#">
         <img class="avatar border-gray" src="static/img/faces/ramices.jpg" alt="..."/>
 
-        <h4 class="title">{{usuario.nome}} {{usuario.sobrenome}}<br />
+        <h4 class="title">{{usuario.nome}} {{usuario.sobreNome}}<br />
           <small>{{usuario.login}}</small>
         </h4>
       </a>
@@ -16,7 +16,7 @@
     </p>
 
     <p class="description text-center"> 
-      {{usuario.rua}}, {{usuario.cidade}}, {{usuario.CEP}}, {{usuario.pais}}
+      {{usuario.rua}}, {{usuario.cidade}}, {{usuario.cep}}, {{usuario.pais}}
     </p>
     <p class="description text-center"> 
       {{usuario.sobreMim}}
@@ -49,7 +49,7 @@
             subTitle: 'Spent'
           }
         ],
-        usuario: serverBus.usuarios[0]
+        usuario: serverBus.usuario
         
       }
       
@@ -57,7 +57,6 @@
      created() {
     serverBus.$on('usuario', (u) => {
     this.usuario = u;
-    serverBus.usuarios[0] = u;
     });
     },
     methods: {

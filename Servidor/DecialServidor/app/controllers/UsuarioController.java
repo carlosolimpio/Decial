@@ -41,29 +41,29 @@ public class UsuarioController extends Controller{
 	}
 	
 	
-	public Result update(Long id)
+	public Result update(Long id, String login, String senha,String email, String nome, String sobreNome, String rua, String cidade, String pais, String cep, Integer tipo, String sobreMim, String caminhoImagem)
 	{
 		JsonNode resultado = request().body().asJson();
 		
-		String login = resultado.get("login").asText();
-		String senha = resultado.get("senha").asText();
-		String email = resultado.get("email").asText();
-		String nome = resultado.get("nome").asText();
-		String sobreNome = resultado.get("sobreNome").asText();
-		String rua = resultado.get("rua").asText();
-		String cidade =  resultado.get("cidade").asText();
-		String pais = resultado.get("pais").asText();
-		String cep= resultado.get("cep").asText();
-		int tipo =  resultado.get("tipo").asInt();
+		//String login = resultado.get("login").asText();
+		//String senha = resultado.get("senha").asText();
+		//String email = resultado.get("email").asText();
+		//String nome = resultado.get("nome").asText();
+		//String sobreNome = resultado.get("sobreNome").asText();
+		//String rua = resultado.get("rua").asText();
+		//String cidade =  resultado.get("cidade").asText();
+		//String pais = resultado.get("pais").asText();
+		//String cep= resultado.get("cep").asText();
+		//int tipo =  resultado.get("tipo").asInt();
 		TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
-		String caminhoImagem = resultado.get("caminhhoImagem").asText();
-		String sobreMim = resultado.get("sobreMim").asText();
+		//String caminhoImagem = resultado.get("caminhhoImagem").asText();
+		//String sobreMim = resultado.get("sobreMim").asText();
 		
 		
 		Usuario usuario = UsuarioService.getUsuarioID(id);
 		
 		if(usuario == null)
-			return null;
+			return ok(Json.toJson(new Usuario()));;
 		
 		usuario.setLogin(login);
 		usuario.setSenha(senha);
@@ -94,28 +94,30 @@ public class UsuarioController extends Controller{
 	
 	
 	
-	public Result save()
+	public Result save(String login, String senha,String email, String nome, String sobreNome, String rua, String cidade, String pais, String cep, Integer tipo, String sobreMim, String caminhoImagem)
 	{
-		JsonNode resultado = request().body().asJson();
+		//JsonNode resultado = request().body().asJson();
 		
 		try{
 			
-			String login = resultado.get("login").asText();
-			String senha = resultado.get("senha").asText();
-			String email = resultado.get("email").asText();
-			String nome = resultado.get("nome").asText();
-			String sobreNome = resultado.get("sobreNome").asText();
-			String rua = resultado.get("rua").asText();
-			String cidade =  resultado.get("cidade").asText();
-			String pais = resultado.get("pais").asText();
-			String cep= resultado.get("cep").asText();
-			int tipo =  resultado.get("tipo").asInt();
+			//String login = resultado.get("login").asText();
+			//String senha = resultado.get("senha").asText();
+			//String email = resultado.get("email").asText();
+			//String nome = resultado.get("nome").asText();
+			//String sobreNome = resultado.get("sobreNome").asText();
+			//String rua = resultado.get("rua").asText();
+			//String cidade =  resultado.get("cidade").asText();
+		//	String pais = resultado.get("pais").asText();
+			//String cep= resultado.get("cep").asText();
+			//int tipo =  resultado.get("tipo").asInt();
 			TIPOUSUARIO tipoUsuario = TIPOUSUARIO.values()[tipo];
-			String sobreMim = resultado.get("sobreMim").asText();
-			String caminhoImagem = resultado.get("caminhhoImagem").asText();
+			//String sobreMim = resultado.get("sobreMim").asText();
+			//String caminhoImagem = resultado.get("caminhhoImagem").asText();
 			Usuario usuario = new Usuario(login, senha, email, nome, sobreNome, rua, cidade, pais, cep, tipoUsuario, sobreMim, caminhoImagem);
 			
 			usuario.save();
+			
+			
 			return ok(Json.toJson(usuario));
 			
 		} catch (Exception e) {
@@ -126,15 +128,19 @@ public class UsuarioController extends Controller{
 	}
 	
 	
-	public Result login()
+	public Result login(String login, String senha)
 	{
-		JsonNode resultado = request().body().asJson();
+		//JsonNode resultado = request().body().asJson();
 		
-		String login = resultado.get("login").asText();
-		String senha = resultado.get("senha").asText();
+		//String login = "ramices"; //= resultado.get("login").asText();
+		//String senha = "12345";//= resultado.get("senha").asText();
 		
 		Usuario usuario = UsuarioService.login(login, senha);
 		
+		if(usuario== null)
+		{
+			return ok(Json.toJson(new Usuario()));
+		}
 		return ok(Json.toJson(usuario));
 		
 	}

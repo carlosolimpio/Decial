@@ -32,7 +32,7 @@
           <fg-input type="text"
                     label="Sobrenome"
                     placeholder="Sobrenome"
-                    v-model="usuario.sobrenome">
+                    v-model="usuario.sobreNome">
           </fg-input>
         </div>
       </div>
@@ -66,7 +66,7 @@
           <fg-input type="number"
                     label="CEP"
                     placeholder="CEP"
-                    v-model="usuario.CEP">
+                    v-model="usuario.cep">
           </fg-input>
         </div>
       </div>
@@ -111,7 +111,7 @@
     },
     data () {
       return {
-        usuario: serverBus.usuarios[0],
+        usuario: Object.create(serverBus.usuario),
         senha: '',
         mensagem: false
       }
@@ -120,10 +120,22 @@
     methods: {
       updateProfile () {
         
-        if(this.senha === serverBus.usuarios[0].senha)
+        if(this.senha === serverBus.usuario.senha)
         { 
-          serverBus.$emit('usuario', this.usuario);
           this.mensagem = false;
+          var tipo = this.usuario.tipo.toString() == 'ADM'?"1": "0"
+          axios.get('http://localhost:9000/api/usuarios/'+ this.usuario.id.toString() +"/" + this.usuario.login + "/" + this.usuario.senha + "/" + this.usuario.email+ "/" + this.usuario.nome+ "/" + this.usuario.sobreNome+ "/" + this.usuario.rua+ "/" + this.usuario.cidade+ "/" + this.usuario.pais+ "/" + this.usuario.cep.toString()+ "/" + tipo.toString() +"/" + this.usuario.sobreMim+ "/" + this.usuario.caminhoImagem )
+            .then(function(response){
+              
+              alert("Modificado com sucesso"); 
+              serverBus.usuario = response.data       
+              serverBus.$emit('usuario', serverBus.usuario); 
+            }).
+            catch(function(error)
+            {
+              alert(error);
+            });
+
         }else
            this.mensagem = true;
       }

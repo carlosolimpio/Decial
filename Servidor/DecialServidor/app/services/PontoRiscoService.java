@@ -12,7 +12,8 @@ public class PontoRiscoService {
 	
 	public static List<PontoRisco> getAll()
 	{
-		return Ebean.createQuery(PontoRisco.class).where().findList();
+		List<PontoRisco> lpr =  Ebean.createQuery(PontoRisco.class).where().findList();
+		return lpr;
 	}
 	
 	public static PontoRisco getById(Long id)

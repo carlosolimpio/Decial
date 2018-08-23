@@ -50,6 +50,10 @@ public class Usuario extends Model{
 		this.caminhoImagem = caminhoImagem;
 	}
 
+	public Usuario() {
+		
+	}
+
 	public Long getId() {
 		return id;
 	}

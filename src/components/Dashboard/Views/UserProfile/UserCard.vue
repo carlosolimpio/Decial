@@ -45,7 +45,7 @@
             subTitle: 'Spent'
           }
         ],
-        usuario: serverBus.usuarios[0]
+        usuario: Object.create(serverBus.usuario)
         
       }
       

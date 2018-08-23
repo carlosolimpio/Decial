@@ -26,7 +26,8 @@ export const serverBus = new Vue(
     data: {
       usuarios: [
         ],
-        logado: false
+        logado: false,
+        usuario: {}
     }
   }
 )
