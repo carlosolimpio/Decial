@@ -60,12 +60,13 @@ public class PontoRiscoController extends Controller {
 		return ok(Json.toJson(ponto));
 	}
 	
-	public Result save()
+	public Result save(String cep, String solicitacaoBairro, String solicitacaoEndereco, String solicitacaoDescricao, String enderecoReferencia)
 	{
-		JsonNode resultado = request().body().asJson();
+		//JsonNode resultado = request().body().asJson();
 		
 		try
 		{
+			/*
 			String cep = resultado.get("cep").asText();
 			String solicitacaoBairro = resultado.get("solicitacaoBairro").asText();
 			String solicitacaoEndereco = resultado.get("solicitacaoEndereco").asText();
@@ -81,9 +82,10 @@ public class PontoRiscoController extends Controller {
 			int riscoAux = resultado.get("risco").intValue();
 			RISCO risco = RISCO.values()[riscoAux];
 			Long avaliadorID = resultado.get("avaliadorID").asLong();
+			*/
+		
 			
-			
-			PontoRisco ponto = new PontoRisco(cep, solicitacaoBairro, solicitacaoEndereco, solicitacaoDescricao, enderecoReferencia, status, latitude, longitude, processoNumero, dataSolicitacao, dataAceitacao, risco, avaliadorID);
+			PontoRisco ponto = new PontoRisco(cep, solicitacaoBairro, solicitacaoEndereco, solicitacaoDescricao, enderecoReferencia);
 			ponto.save();
 			return ok(Json.toJson(ponto));
 		}
@@ -127,6 +129,7 @@ JsonNode resultado = request().body().asJson();
 			ponto.setSolicitacaoEndereco(solicitacaoEndereco);
 			ponto.setSolicitacaoDescricao(solicitacaoDescricao);
 			ponto.setEnderecoReferencia(enderecoReferencia);
+			/*
 			ponto.setStatus(status);
 			ponto.setLatitude(latitude);
 			ponto.setLongitude(longitude);
@@ -135,6 +138,7 @@ JsonNode resultado = request().body().asJson();
 			ponto.setDataSolicitacao(dataSolicitacao);
 			ponto.setRisco(risco);
 			ponto.setAvaliadorID(avaliadorID);
+			*/
 			
 			ponto.save();
 			return ok(Json.toJson(ponto));

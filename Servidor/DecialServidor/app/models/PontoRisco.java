@@ -27,6 +27,7 @@ public class PontoRisco extends Model{
 	private String solicitacaoEndereco;
 	private String solicitacaoDescricao;
 	private String enderecoReferencia;
+	/*
 	private STATUS status;
 	private Float latitude;
 	private Float longitude;
@@ -34,17 +35,18 @@ public class PontoRisco extends Model{
 	private Date dataSolicitacao;
 	private Date dataAceitacao;
 	private RISCO risco;
+	*/
 	
-	private Long avaliadorID;
+	//private Long avaliadorID;
 	
-	public PontoRisco(String cep, String solicitacaoBairro, String solicitacaoEndereco, String solicitacaoDescricao, String enderecoReferencia,
-			STATUS status, Float latitude, Float longitude, Long processoNumero, Date dataSolicitacao, Date dataAceitacao , RISCO risco, Long avaliadorID)
+	public PontoRisco(String cep, String solicitacaoBairro, String solicitacaoEndereco, String solicitacaoDescricao, String enderecoReferencia)
 	{
 		this.cep = cep;
 		this.solicitacaoBairro = solicitacaoBairro;
 		this.solicitacaoEndereco = solicitacaoEndereco;
 		this.solicitacaoDescricao = solicitacaoDescricao;
 		this.enderecoReferencia = enderecoReferencia;
+		/*
 		this.status = status;
 		this.latitude = latitude;
 		this.longitude = longitude;
@@ -52,6 +54,7 @@ public class PontoRisco extends Model{
 		this.dataAceitacao = dataAceitacao;
 		this.risco = risco;
 		this.avaliadorID = avaliadorID;
+		*/
 	}
 	
 	public Long getId() {
@@ -91,6 +94,7 @@ public class PontoRisco extends Model{
 	public void setEnderecoReferencia(String enderecoReferencia) {
 		this.enderecoReferencia = enderecoReferencia;
 	}
+	/*
 	public STATUS getStatus() {
 		return status;
 	}
@@ -139,5 +143,6 @@ public class PontoRisco extends Model{
 	public void setAvaliadorID(Long avaliadorID) {
 		this.avaliadorID = avaliadorID;
 	}
+	*/
 	
 }

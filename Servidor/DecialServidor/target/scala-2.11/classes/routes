@@ -5,15 +5,24 @@
 
 
 # Map static resources from the /public folder to the /assets URL path
+
+
+#usuario
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+GET		/api/usuarios		controllers.UsuarioController.getAll()
+GET		/api/usuarios_admin		controllers.UsuarioController.getAllAdmin()
+GET		/api/usuarios_externo		controllers.UsuarioController.getAllExterno()
+GET		/api/usuarios/:id		controllers.UsuarioController.getById(id:Long)
+GET	   /api/usuarios/:login/:senha/:email/:nome/:sobreNome/:rua/:cidade/:pais/:cep/:tipo/:sobreMim/:caminhoImagem		controllers.UsuarioController.save(login:String, senha:String, email:String, nome:String, sobreNome:String, rua:String, cidade:String, pais:String,cep:String, tipo:Integer, sobreMim:String, caminhoImagem:String)
+DELETE	/api/usuarios/:id		controllers.UsuarioController.delete(id:Long)
+GET /api/usuarios/:id/:login/:senha/:email/:nome/:sobreNome/:rua/:cidade/:pais/:cep/:tipo/:sobreMim/:caminhoImagem		controllers.UsuarioController.update(id:Long, login:String, senha:String, email:String, nome:String, sobreNome:String, rua:String, cidade:String, pais:String,cep:String, tipo:Integer, sobreMim:String, caminhoImagem:String)
+GET	/api/usuarios/login/:login/:senha		controllers.UsuarioController.login(login:String, senha:String)
 
-#Usuarios
-GET 	/usuarios	@controllers.UsuarioController.getAll()
-GET 	/usuarios/:id	@controllers.UsuarioController.getById(id:Long)
-POST 	/usuarios	@controllers.UsuarioController.save()
-PUT 	/usuarios/:id	@controllers.UsuarioController.update(id:Long)
-DELETE 	/usuarios/:id	@controllers.UsuarioController.delete(id:Long)
-GET 	/usuarios_admin	@controllers.UsuarioController.getAllAdmin()
-GET 	/usuarios_externo	@controllers.UsuarioController.getAllExterno()
-
-#PontoRisco
+#ponto
+GET	/api/pontos_risco		controllers.PontoRiscoController.getAll()
+GET	/api/pontos_risco/:id		controllers.PontoRiscoController.getById(id:Long)
+GET	/api/pontos_risco/:cep		controllers.PontoRiscoController.getByCep(cep:String)
+GET	/api/pontos_risco/:risco		controllers.PontoRiscoController.getByRisco(risco:Integer)
+DELETE	/api/pontos_risco/:id		controllers.PontoRiscoController.delete(id:Long)
+PUT		/api/pontos_risco/:id		controllers.PontoRiscoController.update(id:Long)
+GET		/api/pontos_risco/:cep/:solicitacaoBairro/:solicitacaoEndereco/:solicitacaoDescricao/:enderecoReferencia	controllers.PontoRiscoController.save(cep: String, solicitacaoBairro: String, solicitacaoEndereco: String, solicitacaoDescricao: String, enderecoReferencia: String)

@@ -25,4 +25,4 @@ GET	/api/pontos_risco/:cep		controllers.PontoRiscoController.getByCep(cep:String
 GET	/api/pontos_risco/:risco		controllers.PontoRiscoController.getByRisco(risco:Integer)
 DELETE	/api/pontos_risco/:id		controllers.PontoRiscoController.delete(id:Long)
 PUT		/api/pontos_risco/:id		controllers.PontoRiscoController.update(id:Long)
-POST		/api/pontos_risco/		controllers.PontoRiscoController.save()
+GET		/api/pontos_risco/:cep/:solicitacaoBairro/:solicitacaoEndereco/:solicitacaoDescricao/:enderecoReferencia	controllers.PontoRiscoController.save(cep: String, solicitacaoBairro: String, solicitacaoEndereco: String, solicitacaoDescricao: String, enderecoReferencia: String)
