@@ -2,32 +2,33 @@
   <div class="card">
 
     <div class="card-header">
-      <ul id="example-2" v-if="posts && posts.length">
+      <ul>
         <div>
-          <ul  v-for="post of posts" @change="getPontos()">
-            {{ posts }} - {{post.title}} - {{ post.message }}
-            <p>{{response}}</p>
-            <!--<div>-->
-              <!--<img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">-->
-              <!--Mike Andrew-->
-              <!--<label id="data">22/03/2018</label>-->
-            <!--</div>-->
-            <!--<div class="card-body">-->
-              <!--<a href="#">-->
-                <!--<h5 id="txtlocalizacao" class="card-title">Area de Risco Rua fulano</h5>-->
-              <!--</a>-->
-              <!--<p class="card-text">Area com risco de desabamento.</p>-->
-              <!--<div id="imagens">-->
-                <!--<img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">-->
-                <!--<img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">-->
-              <!--</div>-->
-              <!--<div id="botoes">-->
-                <!--<button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>-->
-                <!--<button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" @click.prevent="rejeitarPonto">Rejeitar</button>-->
-              <!--</div>-->
-              <!--<br>-->
-            <!--</div>-->
-            <!--<br>-->
+          <ul >
+            <div>
+              <img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">
+              {{ usuario.nome }}
+              <label id="data">22/03/2018</label>
+            </div>
+            <div class="card-body">
+              <a href="#" v-for="post in posts">
+                <p class="card-text">{{ posts.solicitacaoDescricao }}</p>
+                <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoBairro }} - {{ post.solicitacaoEndereco }} - {{ post.enderecoReferencia }} </h5>
+                <button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>
+                <button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" @click.prevent="rejeitarPonto">Rejeitar</button>
+              </a>
+
+              <div id="imagens">
+
+              </div>
+              <div id="botoes">
+
+                <button id="teste"  type="button" class="btn btn-info btn-fill" v-on:click="teste" >teste</button>
+
+              </div>
+              <br>
+            </div>
+            <br>
           </ul>
 
 
@@ -43,25 +44,41 @@
 </template>
 <script>
   import axios from 'axios'
+  import { serverBus } from 'src/main'
   export default {
     data () {
       return {
-        posts: {},
+        usuario: serverBus.usuario,
+        posts: []
+          ,
         errors: []
       }
-      return {
-        el: '#example-2',
-        parentMessage: 'Ocorrência',
-        items: [
-          { message: 'Desabamento de barranco' },
-          { message: 'Alagemneto no morro' },
-          { message: 'Desabamento de barranco' }
-        ],
-        newElement: '',
-        item: []
-      }
+      // return {
+      //   el: '#example-2'
+      //  // parentMessage: 'Ocorrência',
+      //   // items: [
+      //   //   { message: 'Desabamento de barranco' },
+      //   //   { message: 'Alagemneto no morro' },
+      //   //   { message: 'Desabamento de barranco' }
+      //   // ],
+      //   // newElement: '',
+      //   // item: []
+      // }
+    },
+
+    profile () {
+      serverBus.$on('usuario', (u) => {
+        this.usuario = u
+      })
     },
     methods: {
+      teste () {
+        axios.get("http://localhost:9000/api/pontos_risco")
+          .then(response => {
+            this.posts = response.data
+          })
+
+      },
       addElement () {
         /*  console.log(e); */
         var title = this.newElement.trim()
@@ -83,15 +100,6 @@
         alert("Ponto rejeitado")
         aceitar.disabled = true
         rejeitar.disabled = true
-      },
-      getPontos () {
-        axios.get('http://localhost:9000/pontos_risco')
-          .then(response => {
-            this.posts = response.data
-          })
-          .catch(e => {
-            this.errors.push(e)
-          })
       }
     }
   }

@@ -8,7 +8,7 @@
                 <label>Login:</label> <input class = 'form form-control' type="text" placeholder="Login" v-model='usuario.login'  >
                 <label>senha:</label> <input class = 'form form-control'  type="password" placeholder="Senha" v-model ='usuario.senha' >
                 <br>
-                <button class = 'btn btn-primary ' v-on:click = 'login'>Login</button>
+              <button class = 'btn btn-primary ' v-on:click = 'login'>Login</button>
                 <br>
                 <br>
                 <div class = 'alert alert-danger' v-if='errado'>Usuário inválido</div>
@@ -71,8 +71,10 @@ export default {
                 {
                     
                     serverBus.logado = true;
+
                     serverBus.usuario = response.data
-                    serverBus.$emit('logged', true);
+                    serverBus.adm = serverBus.usuario.tipo.toString() =="ADM"
+                  serverBus.$emit('logged', true);
                     this.$router.go('/admin/maps');
                     
                     

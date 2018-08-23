@@ -71,6 +71,7 @@ import {serverBus} from 'src/main'
       sair()
       {
         serverBus.logado = true;
+        serverBus.adm = false
         serverBus.$emit('logged', false);
             
       }

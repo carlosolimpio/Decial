@@ -14,7 +14,7 @@
         <i class="nc-simple-add"></i>
         <p>Adicionar Pontos</p>
       </sidebar-link>
-      <sidebar-link to="/admin/validacao" v-if = "logado">
+      <sidebar-link to="/admin/validacao" v-if = "adm">
         <i class="nc-icon nc-check-2"></i>
         <p>Validar Pontos</p>
       </sidebar-link>
@@ -53,13 +53,15 @@
     data()
     {
       return{
-        logado: serverBus.logado
+        logado: serverBus.logado,
+        adm: serverBus.adm
       }
     },
     created () {
      
       serverBus.$on('logged', (logado) => {
-        
+
+        this.adm = serverBus.adm;
         this.logado = logado;
       })
     },  
