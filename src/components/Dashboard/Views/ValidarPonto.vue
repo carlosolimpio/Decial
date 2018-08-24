@@ -20,7 +20,7 @@
 
                 <h5 id="descricao" class="card-title" >Bairro: {{ post.solicitacaoBairro }}  </h5><br>
 
-                <h5 id="referencia" class="card-title"  >Ponto de refência: {{ post.enderecoReferencia }} </h5><br>
+                <h5 id="referencia" class="card-title"  >Ponto de Referência: {{ post.enderecoReferencia }} </h5><br>
 
                 <div>
                   <button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>
@@ -61,7 +61,7 @@
     data () {
       return {
         usuario: serverBus.usuario,
-        posts: [],
+        posts: {},
         errors: []
       }
       // return {
@@ -108,10 +108,17 @@
         rejeitar.disabled = true
       },
       rejeitarPonto () {
-        axios.delete("http://localhost:9000/api/pontos_risco/" + this.post.id)
+        let id = this.posts.id.toString()
+        axios.get('http://localhost:9000/api/pontos_riscod/' + id.toString())
           .then(response => {
             this.posts = response.data
-            alert("Ponto rejeitado")
+            let r = confirm('Deseja realmente rejeitar este ponto?')
+            if (r === true) {
+              alert('Ponto rejeitado')
+            } else {
+
+            }
+
           })
         aceitar.disabled = true
         rejeitar.disabled = true
