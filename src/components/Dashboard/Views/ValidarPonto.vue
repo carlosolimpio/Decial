@@ -2,7 +2,7 @@
   <div class="card">
 
     <div class="card-header">
-        <div>
+        <div v-on:mousemove="teste">
             <div class="card-body">
               <img class="avatar border-gray pull-left" src="static/img/faces/ramices.jpg" alt="...">
                 {{ usuario.nome }}
@@ -10,7 +10,7 @@
                 <br>
 
               <ul>
-               <li v-for = "post in posts" :key="post.id"> 
+               <li v-for = "post in posts" :key="post.id">
                   <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoDescricao }} </h5><br>
 
                   <h5 id="endereco" class="card-title"  > Rua: {{ post.solicitacaoEndereco }}</h5><br>
@@ -27,7 +27,7 @@
               </ul>
               <br>
               <br>
-              <button v-on:click="teste" class = 'btn btn-primary'>Testar</button>
+              <!--<button v-on:click="teste" class = 'btn btn-primary'>Testar</button>-->
 
               </div>
               <br>
@@ -75,7 +75,7 @@
         axios.get("http://localhost:9000/api/pontos_risco")
           .then(response => {
             this.posts = response.data
-            
+
           })
 
       },
@@ -104,7 +104,12 @@
             {
               element.id == id;
             })
-            alert("Removido com sucesso");
+            let r = confirm("Deseja remover este ponto?")
+            if (r == true) {
+              alert("Removido com sucesso")
+            } else {
+
+            }
 
           })
         aceitar.disabled = true
