@@ -6,26 +6,37 @@
         <div>
           <ul >
             <div>
-              <img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">
-              {{ usuario.nome }}
-              <label id="data">22/03/2018</label>
+
             </div>
-            <div class="card-body">
+            <div class="card-body" v-on:mousemove="teste" >
               <a href="#" v-for="post in posts">
-                <p class="card-text">{{ posts.solicitacaoDescricao }}</p>
-                <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoBairro }} - {{ post.solicitacaoEndereco }} - {{ post.enderecoReferencia }} </h5>
-                <button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>
-                <button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" @click.prevent="rejeitarPonto">Rejeitar</button>
+                <img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">
+                {{ usuario.nome }}<br>
+
+                <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoDescricao }} </h5><br>
+
+                <h5 id="endereco" class="card-title"  > Rua: {{ post.solicitacaoEndereco }}</h5><br>
+                <h5 id="cep" class="card-title"  > Cep: {{ post.cep }}</h5><br>
+
+                <h5 id="descricao" class="card-title" >Bairro: {{ post.solicitacaoBairro }}  </h5><br>
+
+                <h5 id="referencia" class="card-title"  >Ponto de refência: {{ post.enderecoReferencia }} </h5><br>
+
+                <div>
+                  <button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>
+                  <button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" @click.prevent="rejeitarPonto">Rejeitar</button>
+                </div><br>
+
               </a>
 
               <div id="imagens">
 
               </div>
-              <div id="botoes">
+              <!--<div id="botoes">-->
 
-                <button id="teste"  type="button" class="btn btn-info btn-fill" v-on:click="teste" >teste</button>
+                <!--<button id="teste"  type="button" class="btn btn-info btn-fill" v-on:click="teste" >teste</button>-->
 
-              </div>
+              <!--</div>-->
               <br>
             </div>
             <br>
@@ -45,12 +56,12 @@
 <script>
   import axios from 'axios'
   import { serverBus } from 'src/main'
+
   export default {
     data () {
       return {
         usuario: serverBus.usuario,
-        posts: []
-          ,
+        posts: [],
         errors: []
       }
       // return {
@@ -97,7 +108,11 @@
         rejeitar.disabled = true
       },
       rejeitarPonto () {
-        alert("Ponto rejeitado")
+        axios.delete("http://localhost:9000/api/pontos_risco/" + this.post.id)
+          .then(response => {
+            this.posts = response.data
+            alert("Ponto rejeitado")
+          })
         aceitar.disabled = true
         rejeitar.disabled = true
       }
