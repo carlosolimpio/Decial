@@ -2,54 +2,42 @@
   <div class="card">
 
     <div class="card-header">
-      <ul>
         <div>
-          <ul >
-            <div>
+            <div class="card-body">
+              <img class="avatar border-gray pull-left" src="static/img/faces/ramices.jpg" alt="...">
+                {{ usuario.nome }}
+                <br>
+                <br>
 
-            </div>
-            <div class="card-body" v-on:mousemove="teste" >
-              <a href="#" v-for="post in posts">
-                <img class="avatar border-gray pull-left" src="static/img/faces/face-3.jpg" alt="...">
-                {{ usuario.nome }}<br>
+              <ul>
+               <li v-for = "post in posts" :key="post.id"> 
+                  <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoDescricao }} </h5><br>
 
-                <h5 id="txtlocalizacao" class="card-title"  > {{ post.solicitacaoDescricao }} </h5><br>
+                  <h5 id="endereco" class="card-title"  > Rua: {{ post.solicitacaoEndereco }}</h5><br>
+                  <h5 id="cep" class="card-title"  > Cep: {{ post.cep }}</h5><br>
 
-                <h5 id="endereco" class="card-title"  > Rua: {{ post.solicitacaoEndereco }}</h5><br>
-                <h5 id="cep" class="card-title"  > Cep: {{ post.cep }}</h5><br>
+                  <h5 id="descricao" class="card-title" >Bairro: {{ post.solicitacaoBairro }}  </h5><br>
 
-                <h5 id="descricao" class="card-title" >Bairro: {{ post.solicitacaoBairro }}  </h5><br>
+                  <h5 id="referencia" class="card-title"  >Ponto de Referência: {{ post.enderecoReferencia }} </h5><br>
 
-                <h5 id="referencia" class="card-title"  >Ponto de Referência: {{ post.enderecoReferencia }} </h5><br>
-
-                <div>
-                  <button id="aceitar"  type="button" class="btn btn-info btn-fill" @click.prevent="aceitarPonto" >Aceitar</button>
-                  <button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" @click.prevent="rejeitarPonto">Rejeitar</button>
-                </div><br>
-
-              </a>
-
-              <div id="imagens">
+                  <button id="aceitar"  type="button" class="btn btn-info btn-fill" v-on:click="aceitarPonto" >Aceitar</button>
+                  <button id="rejeitar"  type="button" class="btn btn-secondary btn-fill" v-on:click="rejeitarPonto(post.id)">Rejeitar</button>
+                  <br>
+                  </li>
+              </ul>
+              <br>
+              <br>
+              <button v-on:click="teste" class = 'btn btn-primary'>Testar</button>
 
               </div>
-              <!--<div id="botoes">-->
-
-                <!--<button id="teste"  type="button" class="btn btn-info btn-fill" v-on:click="teste" >teste</button>-->
-
-              <!--</div>-->
               <br>
             </div>
             <br>
-          </ul>
-
 
         </div>
 
-      </ul>
-
     </div>
 
-  </div>
 
 
 </template>
@@ -61,8 +49,8 @@
     data () {
       return {
         usuario: serverBus.usuario,
-        posts: {},
-        errors: []
+        posts: [],
+        errors: [],
       }
       // return {
       //   el: '#example-2'
@@ -87,6 +75,7 @@
         axios.get("http://localhost:9000/api/pontos_risco")
           .then(response => {
             this.posts = response.data
+            
           })
 
       },
@@ -107,17 +96,15 @@
         aceitar.disabled = true
         rejeitar.disabled = true
       },
-      rejeitarPonto () {
-        let id = this.posts.id.toString()
-        axios.get('http://localhost:9000/api/pontos_riscod/' + id.toString())
+      rejeitarPonto (idObjc) {
+        var id = idObjc.toString()
+        axios.get('http://localhost:9000/api/pontos_risco/deletar/' + id.toString())
           .then(response => {
-            this.posts = response.data
-            let r = confirm('Deseja realmente rejeitar este ponto?')
-            if (r === true) {
-              alert('Ponto rejeitado')
-            } else {
-
-            }
+            this.posts = this.posts.filter(function(element)
+            {
+              element.id == id;
+            })
+            alert("Removido com sucesso");
 
           })
         aceitar.disabled = true

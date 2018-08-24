@@ -20,9 +20,9 @@ GET	/api/usuarios/login/:login/:senha		controllers.UsuarioController.login(login
 
 #ponto
 GET	/api/pontos_risco		controllers.PontoRiscoController.getAll()
-GET	/api/pontos_risco/:id		controllers.PontoRiscoController.getById(id:Long)
+GET	/api/pontos_risco/get/:id		controllers.PontoRiscoController.getById(id:Long)
 GET	/api/pontos_risco/:cep		controllers.PontoRiscoController.getByCep(cep:String)
 GET	/api/pontos_risco/:risco		controllers.PontoRiscoController.getByRisco(risco:Integer)
-DELETE	/api/pontos_risco/:id		controllers.PontoRiscoController.delete(id:Long)
+GET	/api/pontos_risco/deletar/:id		controllers.PontoRiscoController.delete(id:Long)
 PUT		/api/pontos_risco/:id		controllers.PontoRiscoController.update(id:Long)
 GET		/api/pontos_risco/:cep/:solicitacaoBairro/:solicitacaoEndereco/:solicitacaoDescricao/:enderecoReferencia	controllers.PontoRiscoController.save(cep: String, solicitacaoBairro: String, solicitacaoEndereco: String, solicitacaoDescricao: String, enderecoReferencia: String)

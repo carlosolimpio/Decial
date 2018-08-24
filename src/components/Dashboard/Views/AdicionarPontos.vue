@@ -53,14 +53,9 @@
       <div class="text-center">
         <!--<h3 class = 'text-left alert alert-danger' v-else>Adicionar o ponto</h3><br>-->
         <h3 class = 'text-left alert alert-danger' v-if ='mensagem'>Erro ao adicionar, verifique os campos</h3><br>
-        <button  v-model="pontos" v-on:click = 'postPost' type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updatePonto" >
+        <button   v-on:click = 'postPost' type="submit" class="btn btn-info btn-fill float-center" @click.prevent="updatePonto" >
           Adicionar
         </button>
-        <ul v-if="errors && errors.length">
-          <li v-for="error of errors">
-            {{error.message}}
-          </li>
-        </ul>
       </div>
 
       <div class="clearfix"></div>
@@ -111,7 +106,7 @@
         params.append('solicitacaoEndereco', this.pontos.solicitacaoEndereco)
         params.append('solicitacaoDescricao', this.pontos.solicitacaoDescricao)
         params.append('enderecoReferencia', this.pontos.enderecoReferencia)
-
+        
         axios.get('http://localhost:9000/api/pontos_risco/' + this.pontos.cep + "/" + this.pontos.solicitacaoBairro + "/" + this.pontos.solicitacaoEndereco + "/" + this.pontos.solicitacaoDescricao + "/" + this.pontos.enderecoReferencia )
           .then(function (response) {
             alert("Ponto cadastrado com sucesso")

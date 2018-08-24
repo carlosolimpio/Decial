@@ -54,10 +54,10 @@ public class PontoRiscoController extends Controller {
 		PontoRisco ponto = PontoRiscoService.getById(id);
 		
 		if(ponto == null)
-			return null;
+			return ok(Json.toJson(false));
 		
 		ponto.delete();
-		return ok(Json.toJson(ponto));
+		return ok(Json.toJson(true));
 	}
 	
 	public Result save(String cep, String solicitacaoBairro, String solicitacaoEndereco, String solicitacaoDescricao, String enderecoReferencia)
