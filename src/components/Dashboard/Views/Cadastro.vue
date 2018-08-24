@@ -177,8 +177,9 @@ export default {
            
             axios.get('http://localhost:9000/api/usuarios/' + this.usuario.login + "/" + this.usuario.senha + "/" + this.usuario.email+ "/" + this.usuario.nome+ "/" + this.usuario.sobreNome+ "/" + this.usuario.rua+ "/" + this.usuario.cidade+ "/" + this.usuario.pais+ "/" + this.usuario.cep+ "/" + this.usuario.tipo+ "/" + this.usuario.sobreMim+ "/" + this.usuario.caminhoImagem )
             .then(function(response){
-    
+        
               alert("Cadastrado com sucesso");        
+             serverBus.$emit('cadastrado', true);
                
             });
 

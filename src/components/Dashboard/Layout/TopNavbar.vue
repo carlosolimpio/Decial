@@ -56,6 +56,13 @@ import {serverBus} from 'src/main'
      
       serverBus.$on('logged', (logado) => {
         this.logado = logado;
+        this.$router.push('/admin/user');
+        
+      })
+
+        serverBus.$on('cadastrado', (logado) => {
+        this.$router.push('/admin/login');
+        
       })
     },
     methods: {
